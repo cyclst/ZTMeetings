@@ -117,7 +117,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table1.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -127,7 +127,7 @@ this.FeatureBackground();
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "Seat Number",
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table2.AddRow(new string[] {
                             "A1",
                             "Leonard Hofstadter",
@@ -170,7 +170,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table3.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -189,7 +189,7 @@ this.FeatureBackground();
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Seat Number",
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table4.AddRow(new string[] {
                             "A1",
                             "Leonard Hofstadter",
@@ -247,7 +247,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table5.AddRow(new string[] {
                             "Raj Koothrappali",
                             "raj@zupa.co.uk"});
@@ -263,7 +263,7 @@ this.FeatureBackground();
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Seat Number",
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table6.AddRow(new string[] {
                             "A1",
                             "Leonard Hofstadter",
@@ -330,7 +330,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table7.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -391,7 +391,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table8.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -443,7 +443,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table9.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -488,7 +488,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table10.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
@@ -497,7 +497,7 @@ this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
-                            "Emplyee Email"});
+                            "Employee Email"});
                 table11.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});

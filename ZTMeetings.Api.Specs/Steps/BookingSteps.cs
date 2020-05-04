@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using ZTMeetings.Api.Specs.Models;
@@ -10,39 +12,60 @@ namespace ZTMeetings.Api.Specs.Steps
     [Binding]
     public class BookingSteps
     {
+        private static string _lastErrorMessage;
+
         [Given(@"there are no booked seats")]
         public void GivenThereAreNoBookedSeats()
         {
-            ScenarioContext.Current.Pending();
+            
         }
 
         [Given(@"Seats have been booked for Employees")]
         [When(@"I book a seat for Employees")]
-        public void WhenIBookASeatForEmployees(Table table)
+        public async Task WhenIBookASeatForEmployees(Table table)
         {
-            var employees = table.CreateSet<Employee>();
+            try
+            {
 
-            ScenarioContext.Current.Pending();
+                var employees = table.CreateSet<Employee>();
+
+                await MeetingsApiClient.New().BookSeatsAsync(employees);
+            }
+            catch (Exception ex)
+            {
+                _lastErrorMessage = ex.Message;
+            }
         }
 
         [Then(@"the booked seats should be")]
-        public void ThenTheBookedSeatsShouldBe(Table table)
+        public async Task ThenTheBookedSeatsShouldBe(Table table)
         {
-            var bookings = table.CreateSet<Booking>();
+            var actualBookings = await MeetingsApiClient.New().GetBookingsAsync();
 
-            ScenarioContext.Current.Pending();
+            table.CompareToSet(actualBookings);
         }
 
         [Given(@"(.*) Seats Have Been Booked By Employees")]
-        public void GivenSeatsHaveBeenBookedByEmployees(int amount)
+        public async Task GivenSeatsHaveBeenBookedByEmployees(int amount)
         {
-            ScenarioContext.Current.Pending();
+            var employees = new List<Employee>();
+
+            for (int i = 1; i <= amount; i++)
+            {
+                employees.Add(new Employee
+                {
+                    EmployeeName = $"Test Employee {i}",
+                    EmployeeEmail = $"test{i}@zupa.co.uk"
+                });
+            }
+
+            await MeetingsApiClient.New().BookSeatsAsync(employees);
         }
 
         [Then(@"the following error should be returned '(.*)'")]
-        public void ThenTheFollowingErrorShouldBeReturned(string p0)
+        public void ThenTheFollowingErrorShouldBeReturned(string error)
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(error, _lastErrorMessage);
         }
         
     }
