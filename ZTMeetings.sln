@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTMeetings.Api", "ZTMeeting
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTMeetings.Api.Specs", "ZTMeetings.Api.Specs\ZTMeetings.Api.Specs.csproj", "{F2CBE241-1399-44FC-A052-A505AC068CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTMeetings.Domain", "ZTMeetings.Domain\ZTMeetings.Domain.csproj", "{BA9D1634-34B6-4AE5-BB12-D206A1DB86E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTMeetings.Domain.Tests", "ZTMeetings.Domain.Tests\ZTMeetings.Domain.Tests.csproj", "{0FB62711-4D31-47AB-A7B0-927C272D73DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F2CBE241-1399-44FC-A052-A505AC068CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2CBE241-1399-44FC-A052-A505AC068CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2CBE241-1399-44FC-A052-A505AC068CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9D1634-34B6-4AE5-BB12-D206A1DB86E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9D1634-34B6-4AE5-BB12-D206A1DB86E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9D1634-34B6-4AE5-BB12-D206A1DB86E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9D1634-34B6-4AE5-BB12-D206A1DB86E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB62711-4D31-47AB-A7B0-927C272D73DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB62711-4D31-47AB-A7B0-927C272D73DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB62711-4D31-47AB-A7B0-927C272D73DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB62711-4D31-47AB-A7B0-927C272D73DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
