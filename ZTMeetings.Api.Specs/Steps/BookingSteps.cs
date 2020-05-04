@@ -59,9 +59,14 @@ namespace ZTMeetings.Api.Specs.Steps
                     EmployeeName = $"Test Employee {i}",
                     EmployeeEmail = $"test{i}@zupa.co.uk"
                 });
-            }
 
-            await MeetingsApiClient.New().BookSeatsAsync(_meetingId, employees);
+                if (employees.Count % 4 == 0 || i == amount)
+                {
+                    await MeetingsApiClient.New().BookSeatsAsync(_meetingId, employees);
+
+                    employees = new List<EmployeeDto>();
+                }
+            }
         }
 
         [Then(@"the following error should be returned '(.*)'")]

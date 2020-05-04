@@ -9,10 +9,10 @@ Background:
 @mytag
 Scenario: Book Single Seats With Full Seat Availability
 	When I book a seat for Employees
-	| Employee Name | Employee Email  |
-	| Leonard Hofstadter   | leonard@zupa.co.uk |
+	| Employee Name      | Employee Email     |
+	| Leonard Hofstadter | leonard@zupa.co.uk |
 	Then the booked seats should be
-	| Seat Number | Employee Name | Employee Email  |
+	| Seat Number | Employee Name      | Employee Email     |
 	| A1          | Leonard Hofstadter | leonard@zupa.co.uk |
 
 Scenario: Book Maximum Seats With Full Seat Availability
@@ -23,28 +23,32 @@ Scenario: Book Maximum Seats With Full Seat Availability
 	| Penny Hofstadter   | penny@zupa.co.uk   |
 	| Howard Wolowitz    | howard@zupa.co.uk  |
 	Then the booked seats should be
-	| Seat Number | Employee Name      | Employee Email      |
+	| Seat Number | Employee Name      | Employee Email     |
 	| A1          | Leonard Hofstadter | leonard@zupa.co.uk |
 	| A2          | Sheldon Cooper     | sheldon@zupa.co.uk |
 	| A3          | Penny Hofstadter   | penny@zupa.co.uk   |
 	| A4          | Howard Wolowitz    | howard@zupa.co.uk  |
 
-Scenario: Book Seats With First 3 Seats Already Booked
-	Given 3 Seats Have Been Booked By Employees
+Scenario: Book Seats With First 8 Seats Already Booked
+	Given 8 Seats Have Been Booked By Employees
 	When I book a seat for Employees
-	| Employee Name           | Employee Email         |
-	| Raj Koothrappali        | raj@zupa.co.uk        |
-	| Bernadette Rostenkowski | bernadette@zupa.co.uk |
-	| Amy Farrah Fowler       | amy@zupa.co.uk        |
+	| Employee Name      | Employee Email     |
+	| Leonard Hofstadter | leonard@zupa.co.uk |
+	| Sheldon Cooper     | sheldon@zupa.co.uk |
+	| Penny Hofstadter   | penny@zupa.co.uk   |
 	Then the booked seats should be
-	| Seat Number | Employee Name           | Employee Email         |
-	| A1          | Leonard Hofstadter      | leonard@zupa.co.uk    |
-	| A2          | Sheldon Cooper          | sheldon@zupa.co.uk    |
-	| A3          | Penny Hofstadter        | penny@zupa.co.uk      |
-	| A4          | Howard Wolowitz         | howard@zupa.co.uk     |
-	| B1          | Raj Koothrappali        | raj@zupa.co.uk        |
-	| B2          | Bernadette Rostenkowski | bernadette@zupa.co.uk |
-	| B3          | Amy Farrah Fowler       | amy@zupa.co.uk        |
+	| Seat Number | Employee Name      | Employee Email     |
+	| A1          | Test Employee 1    | test1@zupa.co.uk   |
+	| A2          | Test Employee 2    | test2@zupa.co.uk   |
+	| A3          | Test Employee 3    | test3@zupa.co.uk   |
+	| A4          | Test Employee 4    | test4@zupa.co.uk   |
+	| A5          | Test Employee 5    | test5@zupa.co.uk   |
+	| A6          | Test Employee 6    | test6@zupa.co.uk   |
+	| A7          | Test Employee 7    | test7@zupa.co.uk   |
+	| A8          | Test Employee 8    | test8@zupa.co.uk   |
+	| A9          | Leonard Hofstadter | leonard@zupa.co.uk |
+	| A10         | Sheldon Cooper     | sheldon@zupa.co.uk |
+	| B1          | Penny Hofstadter   | penny@zupa.co.uk   |
 
 Scenario: Book More Than The Maximum Number Of Seats
 	When I book a seat for Employees

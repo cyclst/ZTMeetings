@@ -214,11 +214,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Book Seats With First 3 Seats Already Booked")]
-        public virtual void BookSeatsWithFirst3SeatsAlreadyBooked()
+        [NUnit.Framework.DescriptionAttribute("Book Seats With First 8 Seats Already Booked")]
+        public virtual void BookSeatsWithFirst8SeatsAlreadyBooked()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book Seats With First 3 Seats Already Booked", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book Seats With First 8 Seats Already Booked", null, ((string[])(null)));
 #line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -243,20 +243,20 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 33
- testRunner.Given("3 Seats Have Been Booked By Employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("8 Seats Have Been Booked By Employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Employee Name",
                             "Employee Email"});
                 table5.AddRow(new string[] {
-                            "Raj Koothrappali",
-                            "raj@zupa.co.uk"});
+                            "Leonard Hofstadter",
+                            "leonard@zupa.co.uk"});
                 table5.AddRow(new string[] {
-                            "Bernadette Rostenkowski",
-                            "bernadette@zupa.co.uk"});
+                            "Sheldon Cooper",
+                            "sheldon@zupa.co.uk"});
                 table5.AddRow(new string[] {
-                            "Amy Farrah Fowler",
-                            "amy@zupa.co.uk"});
+                            "Penny Hofstadter",
+                            "penny@zupa.co.uk"});
 #line 34
  testRunner.When("I book a seat for Employees", ((string)(null)), table5, "When ");
 #line hidden
@@ -266,32 +266,48 @@ this.FeatureBackground();
                             "Employee Email"});
                 table6.AddRow(new string[] {
                             "A1",
+                            "Test Employee 1",
+                            "test1@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A2",
+                            "Test Employee 2",
+                            "test2@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A3",
+                            "Test Employee 3",
+                            "test3@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A4",
+                            "Test Employee 4",
+                            "test4@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A5",
+                            "Test Employee 5",
+                            "test5@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A6",
+                            "Test Employee 6",
+                            "test6@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A7",
+                            "Test Employee 7",
+                            "test7@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A8",
+                            "Test Employee 8",
+                            "test8@zupa.co.uk"});
+                table6.AddRow(new string[] {
+                            "A9",
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
                 table6.AddRow(new string[] {
-                            "A2",
+                            "A10",
                             "Sheldon Cooper",
                             "sheldon@zupa.co.uk"});
                 table6.AddRow(new string[] {
-                            "A3",
+                            "B1",
                             "Penny Hofstadter",
                             "penny@zupa.co.uk"});
-                table6.AddRow(new string[] {
-                            "A4",
-                            "Howard Wolowitz",
-                            "howard@zupa.co.uk"});
-                table6.AddRow(new string[] {
-                            "B1",
-                            "Raj Koothrappali",
-                            "raj@zupa.co.uk"});
-                table6.AddRow(new string[] {
-                            "B2",
-                            "Bernadette Rostenkowski",
-                            "bernadette@zupa.co.uk"});
-                table6.AddRow(new string[] {
-                            "B3",
-                            "Amy Farrah Fowler",
-                            "amy@zupa.co.uk"});
 #line 39
  testRunner.Then("the booked seats should be", ((string)(null)), table6, "Then ");
 #line hidden
@@ -305,7 +321,7 @@ this.FeatureBackground();
         {
             string[] tagsOfScenario = ((string[])(null));
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book More Than The Maximum Number Of Seats", null, ((string[])(null)));
-#line 49
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -346,10 +362,10 @@ this.FeatureBackground();
                 table7.AddRow(new string[] {
                             "Raj Koothrappali",
                             "raj@zupa.co.uk"});
-#line 50
+#line 54
  testRunner.When("I book a seat for Employees", ((string)(null)), table7, "When ");
 #line hidden
-#line 57
+#line 61
  testRunner.Then("the following error should be returned \'The maximum number of seats that can be b" +
                         "ooked by an employee is 4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -363,7 +379,7 @@ this.FeatureBackground();
         {
             string[] tagsOfScenario = ((string[])(null));
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book More Seats Than Are Available", null, ((string[])(null)));
-#line 59
+#line 63
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -386,7 +402,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 60
+#line 64
  testRunner.Given("99 Seats Have Been Booked By Employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -398,10 +414,10 @@ this.FeatureBackground();
                 table8.AddRow(new string[] {
                             "Sheldon Cooper",
                             "sheldon@zupa.co.uk"});
-#line 61
+#line 65
  testRunner.When("I book a seat for Employees", ((string)(null)), table8, "When ");
 #line hidden
-#line 65
+#line 69
  testRunner.Then("the following error should be returned \'Meeting is full. Could not book: Sheldon " +
                         "Cooper\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -415,7 +431,7 @@ this.FeatureBackground();
         {
             string[] tagsOfScenario = ((string[])(null));
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book More Seats When Meeting Is Full", null, ((string[])(null)));
-#line 67
+#line 71
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -438,7 +454,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 68
+#line 72
  testRunner.Given("100 Seats Have Been Booked By Employees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -447,10 +463,10 @@ this.FeatureBackground();
                 table9.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
-#line 69
+#line 73
  testRunner.When("I book a seat for Employees", ((string)(null)), table9, "When ");
 #line hidden
-#line 72
+#line 76
  testRunner.Then("the following error should be returned \'Meeting is full. Could not book: Leonard " +
                         "Hofstadter\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -464,7 +480,7 @@ this.FeatureBackground();
         {
             string[] tagsOfScenario = ((string[])(null));
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book A Seat For An Employee Multiple Times", null, ((string[])(null)));
-#line 74
+#line 78
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -493,7 +509,7 @@ this.FeatureBackground();
                 table10.AddRow(new string[] {
                             "Leonard Hofstadter",
                             "leonard@zupa.co.uk"});
-#line 75
+#line 79
  testRunner.Given("Seats have been booked for Employees", ((string)(null)), table10, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -505,10 +521,10 @@ this.FeatureBackground();
                 table11.AddRow(new string[] {
                             "Sheldon Cooper",
                             "sheldon@zupa.co.uk"});
-#line 78
+#line 82
  testRunner.When("I book a seat for Employees", ((string)(null)), table11, "When ");
 #line hidden
-#line 82
+#line 86
  testRunner.Then("the following error should be returned \'The following employee already has a seat" +
                         " booked: Leonard Hofstadter\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

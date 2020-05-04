@@ -15,7 +15,7 @@ namespace ZTMeetings.Api.Specs
         {
             _client = new HttpClient
             {
-                BaseAddress = new Uri("http://localhost:7569/api/meetings")
+                BaseAddress = new Uri("http://localhost:7569/api/meetings/")
             };
         }
 
