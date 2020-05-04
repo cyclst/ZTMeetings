@@ -402,8 +402,8 @@ this.FeatureBackground();
  testRunner.When("I book a seat for Employees", ((string)(null)), table8, "When ");
 #line hidden
 #line 65
- testRunner.Then("the following error should be returned \'Not enough seats available to book. Curre" +
-                        "nt seat availability is 1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the following error should be returned \'Meeting is full. Could not book: Sheldon " +
+                        "Cooper\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -451,7 +451,8 @@ this.FeatureBackground();
  testRunner.When("I book a seat for Employees", ((string)(null)), table9, "When ");
 #line hidden
 #line 72
- testRunner.Then("the following error should be returned \'Meeting is full\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the following error should be returned \'Meeting is full. Could not book: Leonard " +
+                        "Hofstadter\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -508,8 +509,8 @@ this.FeatureBackground();
  testRunner.When("I book a seat for Employees", ((string)(null)), table11, "When ");
 #line hidden
 #line 82
- testRunner.Then("the following error should be returned \'The following employees already have seat" +
-                        "s booked: Leonard Hofstadter\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the following error should be returned \'The following employee already has a seat" +
+                        " booked: Leonard Hofstadter\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

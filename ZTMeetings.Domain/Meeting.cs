@@ -8,8 +8,7 @@ namespace ZTMeetings.Domain
 {
     public class Meeting : AggregateBase
     {
-        private readonly List<Booking> _bookings = new List<Booking>();
-        public IReadOnlyCollection<Booking> Bookings => _bookings;
+        public ICollection<Booking> Bookings { get; private set; }
 
         public DateTime MeetingDateTime { get; private set; }
 
@@ -29,10 +28,10 @@ namespace ZTMeetings.Domain
             if (!employeeEmail.Contains('@')) // Just a rough example!
                 return AggregateResponse.Error("Employee Email is invalid");
 
-            if (_bookings.Count == 100) //TODO - Make configurable
+            if (Bookings.Count == 100) //TODO - Make configurable
                 return AggregateResponse.Error($"Meeting is full. Could not book: {employeeName}");
 
-            if (_bookings.Any(b => b.EmployeeName.Equals(employeeName, StringComparison.InvariantCultureIgnoreCase)
+            if (Bookings.Any(b => b.EmployeeName.Equals(employeeName, StringComparison.InvariantCultureIgnoreCase)
                                   || b.EmployeeEmail.Equals(employeeEmail,
                                       StringComparison.InvariantCultureIgnoreCase)))
             {
@@ -48,11 +47,12 @@ namespace ZTMeetings.Domain
         {
             Id = ev.AggregateId;
             MeetingDateTime = ev.MeetingDateTime;
+            Bookings = new List<Booking>();
         }
 
         internal void Apply(BookingCreatedEvent ev)
         {
-            _bookings.Add(new Booking
+            Bookings.Add(new Booking
             {
                 SeatNumber = ev.SeatNumber,
                 EmployeeName = ev.EmployeeName,
@@ -68,7 +68,7 @@ namespace ZTMeetings.Domain
             int row = 0;
             int col = 1;
 
-            for (int i = 1; i <= _bookings.Count; i++)
+            for (int i = 1; i <= Bookings.Count; i++)
             {
                 if (col == 10)
                 {
