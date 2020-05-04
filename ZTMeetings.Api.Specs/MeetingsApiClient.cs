@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using ZTMeetings.Api.Specs.Models;
+using Newtonsoft.Json;
+using ZTMeetings.Api.Dtos;
 
 namespace ZTMeetings.Api.Specs
 {
@@ -20,34 +19,56 @@ namespace ZTMeetings.Api.Specs
             };
         }
 
-        public async Task<IEnumerable<Booking>> GetBookingsAsync()
+        public async Task CreateMeetingAsync(Guid meetingId, DateTime meetingDateTime)
         {
-            var response = await _client.GetAsync("");
+            var dto = new MeetingDto
+            {
+                Id = meetingId,
+                DateTime = meetingDateTime
+            };
+
+            var response = await _client.PostAsJsonAsync(
+                "", dto);
 
             if (!response.IsSuccessStatusCode)
             {
                 var error = response.Content.ReadAsStringAsync().Result;
 
                 throw new ApplicationException(error);
-            }
-
-            using (var responseStream = await response.Content.ReadAsStreamAsync())
-            {
-                return await JsonSerializer.DeserializeAsync
-                    <IEnumerable<Booking>>(responseStream);
             }
         }
 
-        public async Task BookSeatsAsync(IEnumerable<Employee> employees)
+        public async Task BookSeatsAsync(Guid meetingId, IReadOnlyCollection<EmployeeDto> employees)
         {
             var response = await _client.PostAsJsonAsync(
-                "", employees);
+                $"{meetingId}/bookings", employees);
 
             if (!response.IsSuccessStatusCode)
             {
                 var error = response.Content.ReadAsStringAsync().Result;
 
                 throw new ApplicationException(error);
+            }
+        }
+
+        public async Task<IEnumerable<BookingDto>> GetBookingsAsync(Guid meetingId)
+        {
+            var response = await _client.GetAsync($"{meetingId}/bookings");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsStringAsync().Result;
+
+                throw new ApplicationException(error);
+            }
+
+            using (var s = await response.Content.ReadAsStreamAsync())
+            using (StreamReader sr = new StreamReader(s))
+            using (JsonReader reader = new JsonTextReader(sr))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+
+                return serializer.Deserialize<IEnumerable<BookingDto>>(reader);
             }
         }
 

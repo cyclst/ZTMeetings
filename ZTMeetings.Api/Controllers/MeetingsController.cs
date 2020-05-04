@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ZTMeetings.Api.Models;
+using ZTMeetings.Api.CommandHandlers;
+using ZTMeetings.Api.Commands;
+using ZTMeetings.Api.Dtos;
 
 namespace ZTMeetings.Api.Controllers
 {
@@ -11,16 +14,45 @@ namespace ZTMeetings.Api.Controllers
     [ApiController]
     public class MeetingsController : ControllerBase
     {
-        [HttpGet("")]
-        public async Task<ActionResult<IEnumerable<Booking>>> Get()
+        private readonly IMediator _mediator;
+
+        public MeetingsController(IMediator mediator)
         {
-            return new List<Booking>();
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        }
+
+        [HttpGet("")]
+        public async Task<ActionResult<string>> Get()
+        {
+            return Guid.NewGuid().ToString();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] IEnumerable<Employee> employees)
+        public async Task<IActionResult> Post([FromBody] MeetingDto dto)
         {
+            var response = await _mediator.Send(new AddMeetingCommand(dto.Id, dto.DateTime));
+
+            if (!response.IsSuccessful)
+                return BadRequest(response.MessageString);
+
             return Ok();
+        }
+
+        [HttpPost("{id}/bookings")]
+        public async Task<IActionResult> Post(Guid id, [FromBody] IReadOnlyCollection<EmployeeDto> employees)
+        {
+            var response = await _mediator.Send(new RequestBookingCommand(id, employees));
+
+            if (!response.IsSuccessful)
+                return BadRequest(response.MessageString);
+
+            return Ok();
+        }
+
+        [HttpGet("{id}/bookings")]
+        public async Task<ActionResult<IEnumerable<BookingDto>>> Get(string id)
+        {
+            return new List<BookingDto>();
         }
     }
 }

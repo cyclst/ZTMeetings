@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ZTMeetings.Api.Specs.Models
+﻿namespace ZTMeetings.Api.Dtos
 {
-    public class Booking
+    public class BookingDto
     {
         public string SeatNumber { get; set; }
 

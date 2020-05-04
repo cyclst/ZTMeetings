@@ -4,7 +4,7 @@
 	I want to be able to a book seats
 
 Background: 
-	Given there are no booked seats 
+	Given a new meeting
 
 @mytag
 Scenario: Book Single Seats With Full Seat Availability
@@ -62,14 +62,14 @@ Scenario: Book More Seats Than Are Available
 	| Employee Name      | Employee Email      |
 	| Leonard Hofstadter | leonard@zupa.co.uk |
 	| Sheldon Cooper     | sheldon@zupa.co.uk |
-	Then the following error should be returned 'Not enough seats available to book. Current seat availability is 1'
+	Then the following error should be returned 'Meeting is full. Could not book: Sheldon Cooper'
 
 Scenario: Book More Seats When Meeting Is Full
 	Given 100 Seats Have Been Booked By Employees
 	When I book a seat for Employees
 	| Employee Name      | Employee Email      |
 	| Leonard Hofstadter | leonard@zupa.co.uk |
-	Then the following error should be returned 'Meeting is full'
+	Then the following error should be returned 'Meeting is full. Could not book: Leonard Hofstadter'
 
 Scenario: Book A Seat For An Employee Multiple Times
 	Given Seats have been booked for Employees
@@ -79,4 +79,4 @@ Scenario: Book A Seat For An Employee Multiple Times
 	| Employee Name      | Employee Email      |
 	| Leonard Hofstadter | leonard@zupa.co.uk |
 	| Sheldon Cooper     | sheldon@zupa.co.uk |
-	Then the following error should be returned 'The following employees already have seats booked: Leonard Hofstadter'
+	Then the following error should be returned 'The following employee already has a seat booked: Leonard Hofstadter'

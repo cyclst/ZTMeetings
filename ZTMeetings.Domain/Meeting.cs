@@ -13,9 +13,9 @@ namespace ZTMeetings.Domain
 
         public DateTime MeetingDateTime { get; private set; }
 
-        public Meeting(DateTime meetingDateTime)
+        public Meeting(Guid id, DateTime meetingDateTime)
         {
-            PublishEvent(new MeetingCreatedEvent(meetingDateTime));
+            PublishEvent(new MeetingCreatedEvent(id, meetingDateTime));
         }
 
         public AggregateResponse AddBooking(string employeeName, string employeeEmail)
@@ -26,14 +26,17 @@ namespace ZTMeetings.Domain
             if (string.IsNullOrWhiteSpace(employeeEmail))
                 return AggregateResponse.Error("Employee Email must be supplied");
 
+            if (!employeeEmail.Contains('@')) // Just a rough example!
+                return AggregateResponse.Error("Employee Email is invalid");
+
             if (_bookings.Count == 100) //TODO - Make configurable
-                return AggregateResponse.Error("Meeting is full");
+                return AggregateResponse.Error($"Meeting is full. Could not book: {employeeName}");
 
             if (_bookings.Any(b => b.EmployeeName.Equals(employeeName, StringComparison.InvariantCultureIgnoreCase)
                                   || b.EmployeeEmail.Equals(employeeEmail,
                                       StringComparison.InvariantCultureIgnoreCase)))
             {
-                return AggregateResponse.Error($"Employee '{employeeName}' already booked");
+                return AggregateResponse.Error($"The following employee already has a seat booked: {employeeName}");
             }
 
             PublishEvent(new BookingCreatedEvent(GetNextAvailableSeat(), employeeName, employeeEmail));

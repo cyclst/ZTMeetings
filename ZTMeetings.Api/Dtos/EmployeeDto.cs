@@ -1,6 +1,6 @@
-﻿namespace ZTMeetings.Api.Models
+﻿namespace ZTMeetings.Api.Dtos
 {
-    public class Employee
+    public class EmployeeDto
     {
         public string EmployeeName { get; set; }
 

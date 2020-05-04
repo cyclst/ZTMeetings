@@ -26,7 +26,7 @@ namespace ZTMeetings.Domain.Tests
         public void AddBooking_GivenExistingBookings_ThenBookingShouldBeAdded(int existingBookings, string name, string email, string seat)
         {
             //A
-            _meeting = new Meeting(DateTime.Now);
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
 
             AddExisintBookings(existingBookings);
 
@@ -45,7 +45,7 @@ namespace ZTMeetings.Domain.Tests
         public void AddBooking_GivenFullMeeting_ThenErrorShouldBeReturned()
         {
             //A
-            _meeting = new Meeting(DateTime.Now);
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
 
             AddExisintBookings(100);
 
@@ -61,12 +61,54 @@ namespace ZTMeetings.Domain.Tests
         public void AddBooking_GivenDuplicatedEmployee_ThenErrorShouldBeReturned()
         {
             //A
-            _meeting = new Meeting(DateTime.Now);
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
 
             _meeting.AddBooking("New Person", "newbie@zupa.co.uk");
 
             //A
             var result = _meeting.AddBooking("New Person", "newbie@zupa.co.uk");
+
+            //A
+
+            Assert.IsFalse(result.IsSuccessful);
+        }
+
+        [Test]
+        public void AddBooking_WhenEmptyName_ThenErrorShouldBeReturned()
+        {
+            //A
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
+
+            //A
+            var result = _meeting.AddBooking("", "newbie@zupa.co.uk");
+
+            //A
+
+            Assert.IsFalse(result.IsSuccessful);
+        }
+
+        [Test]
+        public void AddBooking_WhenEmptyEmail_ThenErrorShouldBeReturned()
+        {
+            //A
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
+
+            //A
+            var result = _meeting.AddBooking("New Person", "");
+
+            //A
+
+            Assert.IsFalse(result.IsSuccessful);
+        }
+
+        [Test]
+        public void AddBooking_WhenInvalidEmail_ThenErrorShouldBeReturned()
+        {
+            //A
+            _meeting = new Meeting(Guid.NewGuid(), DateTime.Now);
+
+            //A
+            var result = _meeting.AddBooking("New Person", "New Person");
 
             //A
 

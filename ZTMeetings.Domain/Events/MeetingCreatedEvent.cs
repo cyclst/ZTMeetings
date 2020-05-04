@@ -9,8 +9,9 @@ namespace ZTMeetings.Domain.Events
     {
         public DateTime MeetingDateTime { get; }
 
-        public MeetingCreatedEvent(DateTime meetingDateTime)
+        public MeetingCreatedEvent(Guid id, DateTime meetingDateTime)
         {
+            AggregateId = id;
             MeetingDateTime = meetingDateTime;
         }
     }

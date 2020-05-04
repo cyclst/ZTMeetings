@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using ZTMeetings.Api.Specs.Models;
+using ZTMeetings.Api.Dtos;
 
 namespace ZTMeetings.Api.Specs.Steps
 {
     [Binding]
     public class BookingSteps
     {
+        private Guid _meetingId;
         private static string _lastErrorMessage;
 
-        [Given(@"there are no booked seats")]
-        public void GivenThereAreNoBookedSeats()
+        [Given(@"a new meeting")]
+        public async Task GivenANewMeeting()
         {
-            
+            _meetingId = Guid.NewGuid();
+
+            await MeetingsApiClient.New().CreateMeetingAsync(_meetingId, DateTime.Now);
         }
 
         [Given(@"Seats have been booked for Employees")]
@@ -26,10 +29,9 @@ namespace ZTMeetings.Api.Specs.Steps
         {
             try
             {
+                var employees = table.CreateSet<EmployeeDto>();
 
-                var employees = table.CreateSet<Employee>();
-
-                await MeetingsApiClient.New().BookSeatsAsync(employees);
+                await MeetingsApiClient.New().BookSeatsAsync(_meetingId, employees.ToList());
             }
             catch (Exception ex)
             {
@@ -40,7 +42,7 @@ namespace ZTMeetings.Api.Specs.Steps
         [Then(@"the booked seats should be")]
         public async Task ThenTheBookedSeatsShouldBe(Table table)
         {
-            var actualBookings = await MeetingsApiClient.New().GetBookingsAsync();
+            var actualBookings = await MeetingsApiClient.New().GetBookingsAsync(_meetingId);
 
             table.CompareToSet(actualBookings);
         }
@@ -48,18 +50,18 @@ namespace ZTMeetings.Api.Specs.Steps
         [Given(@"(.*) Seats Have Been Booked By Employees")]
         public async Task GivenSeatsHaveBeenBookedByEmployees(int amount)
         {
-            var employees = new List<Employee>();
+            var employees = new List<EmployeeDto>();
 
             for (int i = 1; i <= amount; i++)
             {
-                employees.Add(new Employee
+                employees.Add(new EmployeeDto
                 {
                     EmployeeName = $"Test Employee {i}",
                     EmployeeEmail = $"test{i}@zupa.co.uk"
                 });
             }
 
-            await MeetingsApiClient.New().BookSeatsAsync(employees);
+            await MeetingsApiClient.New().BookSeatsAsync(_meetingId, employees);
         }
 
         [Then(@"the following error should be returned '(.*)'")]

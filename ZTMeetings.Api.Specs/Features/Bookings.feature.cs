@@ -79,7 +79,7 @@ namespace ZTMeetings.Api.Specs.Features
 #line 6
 #line hidden
 #line 7
- testRunner.Given("there are no booked seats", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a new meeting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
